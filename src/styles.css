@@ -1,7 +1,6 @@
 /**
  * Fonts
  */
-
  @font-face {
   font-family: 'diegote';
   src: url('./assets/BROKENZ.woff2') format('woff2');
@@ -13,12 +12,10 @@
 /**
  * Global
  */
-
  html {
   font-family: sans-serif; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
-
   min-height: 100vh;
 }
 
@@ -52,6 +49,7 @@ figcaption {
   font-size: 1.2em;
   font-weight: 500;
   margin-left: 25px;
+  visibility: hidden;
 }
 
 blockquote {
@@ -97,23 +95,6 @@ nav {
   bottom: 0;
   width: 100%;
   text-align: center;
-}
-
-footer {
-  margin-top: 20px;
-  font-size: 12px;
-}
-
-.copyright {
-  font-size: 9px;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
-.copyright,
-.copyright a {
-  color:lightgray;
 }
 
 /*

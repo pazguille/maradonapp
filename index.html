@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Maradona Frases">
+
+    <link rel="preload" href="./src/assets/BROKENZ.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./src/assets/bg.jpg" as="image" />
+    <link rel="preload" href="./src/quotes.json" as="fetch" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="./src/assets/favicon.svg">
+    <link rel="apple-touch-icon" href="./src/assets/favicon.png">
+    <title>Frases aleatorias del Diego para recordar y compartir.</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <figure>
+      <blockquote>
+        <p data-node="quote">Fue la mano de Dios</p>
+      </blockquote>
+      <figcaption>El Diego</figcaption>
+    </figure>
+    <nav>
+      <button data-action="refresh" aria-label="Cargar otra frase" class="btn btn-refresh">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23 4V10H17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 20V14H7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3.51 8.99995C4.01717 7.56674 4.87913 6.28536 6.01547 5.27537C7.1518 4.26539 8.52547 3.55972 10.0083 3.22421C11.4911 2.8887 13.0348 2.93429 14.4952 3.35673C15.9556 3.77916 17.2853 4.56467 18.36 5.63995L23 9.99995M1 14L5.64 18.36C6.71475 19.4352 8.04437 20.2207 9.50481 20.6432C10.9652 21.0656 12.5089 21.1112 13.9917 20.7757C15.4745 20.4402 16.8482 19.7345 17.9845 18.7245C19.1209 17.7145 19.9828 16.4332 20.49 15" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button data-action="share" aria-label="Compartir frase" class="btn btn-share ">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 12V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 6L12 2L8 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 2V15" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- <footer>
+      <p>Made with <span class="heart">❤️</span> by <a href="https://twitter.com/pazguille" target="_blank" rel="noopener noreferrer">pazguille</a></p>
+    </footer> -->
+
+    <script>
+      window.addEventListener('load', async () => {
+        const quotes = [];
+        const $quote = document.querySelector('[data-node="quote"]');
+        let currentQuoteText = null;
+        let currentQuoteIndex = null;
+
+        function pick(arr) {
+          currentQuoteIndex = Math.floor(Math.random() * arr.length);
+          return arr[currentQuoteIndex];
+        }
+
+        function pickQuote(index) {
+          currentQuoteIndex = index;
+          currentQuoteText = index >= 0 && index !== null ? quotes[index] : pick(quotes);
+          $quote.textContent = currentQuoteText;
+        }
+
+        async function fetchQuotes() {
+          return fetch('./src/quotes.json')
+            .then(res => res.json())
+            .then(data => quotes.push(...data));
+        }
+
+        const $refreshBtn = document.querySelector('[data-action="refresh"]');
+        $refreshBtn.addEventListener('click', () => pickQuote());
+
+        const $shareBtn = document.querySelector('[data-action="share"]');
+        $shareBtn.addEventListener('click', () => {
+          if ('share' in navigator) {
+            navigator.share({
+              title: 'El Diego dijo...',
+              text: currentQuoteText,
+              url: window.location,
+          });
+          } else {
+            alert(currentQuoteText);
+          }
+        });
+
+        await fetchQuotes();
+        const params = new URLSearchParams(window.location.search);
+        pickQuote(params.get('quote'));
+      });
+    </script>
+  </body>
+</html>

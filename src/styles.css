@@ -1,0 +1,135 @@
+/**
+ * Fonts
+ */
+
+ @font-face {
+  font-family: 'diegote';
+  src: url('./assets/BROKENZ.woff2') format('woff2');
+  font-weight: bolder;
+  font-style: normal;
+  font-display: swap;
+}
+
+/**
+ * Global
+ */
+
+ html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+
+  min-height: 100vh;
+}
+
+ body {
+  font: 100%/1.4em Feriados, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: white;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+  letter-spacing: .01em;
+  background: #182637 no-repeat url('./assets/bg.jpg');
+  background-size: cover;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  /* overflow: hidden; */
+}
+
+figure {
+  margin: 0;
+  color: #ECBD68;
+  text-transform: uppercase;
+  background: no-repeat url('./assets/topmisc.png') left top;
+  background-size: 35%;
+  padding: 10px 25px;
+}
+
+figcaption {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-left: 25px;
+}
+
+blockquote {
+  margin: 25px;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: -0.01em;
+  line-height: 100%;
+  font-size: 3.5em;
+  font-family: diegote;
+  position: relative;
+  z-index: 1;
+}
+
+.btn {
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  z-index: 2;
+  border: none;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  margin: 5px;
+}
+
+.btn.btn-refresh {
+  background-color: #ECBD68;
+
+}
+
+p {
+  margin: 0;
+}
+
+nav {
+  background: no-repeat url('./assets/firma.png') center bottom;
+  background-size: cover;
+  height: 198px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.copyright {
+  font-size: 9px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.copyright,
+.copyright a {
+  color:lightgray;
+}
+
+/*
+* Media queries
+*/
+@media all and (min-width: 65em) {
+  figure {
+    width: 50%;
+    min-height: 200px;
+    margin: 0 auto;
+    background-size: 20%;
+  }
+
+  blockquote {
+    margin-top: 150px;
+  }
+
+  nav {
+    height: 420px;
+    background-size: 35%;
+  }
+}

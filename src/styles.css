@@ -79,7 +79,10 @@ blockquote {
 
 .btn.btn-refresh {
   background-color: #ECBD68;
+}
 
+.btn.btn-share {
+  background-color: #FFFFFF;
 }
 
 p {

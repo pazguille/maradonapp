@@ -16,6 +16,11 @@
     <link rel="apple-touch-icon" href="./src/assets/favicon.png">
     <title>Frases aleatorias del Diego para recordar y compartir.</title>
     <link rel="stylesheet" href="./src/styles.css" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@pazguille" />
+    <meta name="twitter:title" content="MaradonApp" />
+    <meta name="twitter:description" content="Frases aleatorias del Diego para recordar y compartir." />
+    <meta name="twitter:image" content="https://eldiego.pazguille.me/src/assets/favicon.png" />
   </head>
   <body>
     <figure>
@@ -73,7 +78,7 @@
           if ('share' in navigator) {
             navigator.share({
               title: 'El Diego dijo...',
-              text: currentQuoteText,
+              text: `"${currentQuoteText}" - El Diego.`,
               url: window.location,
           });
           } else {

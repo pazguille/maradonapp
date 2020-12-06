@@ -104,7 +104,7 @@ nav {
   figure {
     width: 50%;
     min-height: 200px;
-    margin: 0 auto;
+    margin: 150px auto;
     background-size: 20%;
   }
 
@@ -115,5 +115,6 @@ nav {
   nav {
     height: 420px;
     background-size: 35%;
+    background-position: right bottom;
   }
 }
